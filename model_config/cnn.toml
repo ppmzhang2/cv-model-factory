@@ -1,0 +1,37 @@
+[meta]
+name = "CNNBlock"
+version = "0"
+output = "x"
+
+[[layer]]
+source = "haiku"
+func = "Conv2D"
+from = ["x"]
+to = "x"
+
+[layer.init]
+output_channels = 32
+kernel_shape = 3
+stride = 2
+padding = "SAME"
+with_bias = false
+
+[[layer]]
+source = "haiku"
+func = "BatchNorm"
+from = ["x"]
+to = "x"
+
+[layer.init]
+create_scale = true
+create_offset = true
+decay_rate = 0.9
+
+[layer.call]
+is_training = true
+
+[[layer]]
+source = "jax.nn"
+func = "leaky_relu"
+from = ["x"]
+to = "x"
