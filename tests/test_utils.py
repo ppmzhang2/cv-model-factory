@@ -8,8 +8,6 @@ import pytest
 from cvmodel import utils
 
 N = 2
-N_CLASS = 80
-N_BBOX = 5
 
 # with open("cnn.toml", "rb") as f:
 #    dc = tomllib.load(f)
